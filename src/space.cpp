@@ -1196,6 +1196,9 @@ static argval_t do_space(chunk_t *first, chunk_t *second, int& min_sp, bool comp
          {
             next = chunk_get_next_nc(next);
          }
+	 if ((next != NULL) && (next->type == CT_PAREN_CLOSE)) {
+	   return AV_REMOVE;
+	 }
          if ((next != NULL) && (next->type != CT_WORD))
          {
             log_rule("sp_before_unnamed_ptr_star");
